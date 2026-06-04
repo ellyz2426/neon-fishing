@@ -13,12 +13,14 @@ import {
 
 // ─── Types & Constants ───────────────────────────────────────────
 
-type GameState = 'title' | 'modeselect' | 'difficulty' | 'rods' | 'countdown' |
+type GameState = 'title' | 'modeselect' | 'difficulty' | 'rods' | 'bait' | 'countdown' |
   'casting' | 'waiting' | 'biting' | 'fighting' | 'caught' | 'gameover' |
-  'codex' | 'leaderboard' | 'achievements' | 'settings' | 'help' | 'pause';
+  'codex' | 'leaderboard' | 'achievements' | 'settings' | 'help' | 'pause' |
+  'stats' | 'tutorial';
 
 type GameMode = 'free' | 'timeattack' | 'trophy' | 'tournament' | 'daily' | 'zen';
 type Difficulty = 'easy' | 'medium' | 'hard';
+type WeatherType = 'clear' | 'rain' | 'fog' | 'storm' | 'wind' | 'aurora';
 
 interface FishSpecies {
   name: string; rarity: 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary';
@@ -44,6 +46,51 @@ interface Theme {
 interface Achievement {
   id: string; name: string; desc: string; check: () => boolean;
 }
+
+// ─── Weather Data ────────────────────────────────────────────────
+
+interface WeatherCondition {
+  type: WeatherType; name: string; icon: string;
+  effect: string; castMod: number; biteMod: number; rarityMod: number;
+}
+
+const WEATHER_CONDITIONS: WeatherCondition[] = [
+  { type: 'clear', name: 'Clear Skies', icon: '*', effect: 'Standard conditions', castMod: 1.0, biteMod: 1.0, rarityMod: 0 },
+  { type: 'rain', name: 'Neon Rain', icon: '~', effect: 'Fish more active (+bite speed)', castMod: 0.95, biteMod: 1.3, rarityMod: 0.05 },
+  { type: 'fog', name: 'Data Fog', icon: '#', effect: 'Rare fish appear more often', castMod: 0.9, biteMod: 0.85, rarityMod: 0.15 },
+  { type: 'storm', name: 'Ion Storm', icon: '!', effect: 'Legendary chances up, tension higher', castMod: 0.8, biteMod: 1.5, rarityMod: 0.25 },
+  { type: 'wind', name: 'Solar Wind', icon: '>', effect: 'Cast distance varies wildly', castMod: 1.4, biteMod: 1.0, rarityMod: 0 },
+  { type: 'aurora', name: 'Neon Aurora', icon: '~', effect: 'XP bonus +50%, peaceful', castMod: 1.0, biteMod: 0.9, rarityMod: 0.1 },
+];
+
+// ─── Bait Data ───────────────────────────────────────────────────
+
+interface Bait {
+  name: string; desc: string; depthBonus: string; rarityBonus: number;
+  biteSpeedMod: number; color: string; unlockLevel: number; cost: number;
+}
+
+const BAITS: Bait[] = [
+  { name: 'Standard Lure', desc: 'Basic all-purpose bait', depthBonus: 'none', rarityBonus: 0, biteSpeedMod: 1.0, color: '#aaaaaa', unlockLevel: 0, cost: 0 },
+  { name: 'Glow Worm', desc: 'Attracts mid-depth fish faster', depthBonus: 'mid', rarityBonus: 0.05, biteSpeedMod: 1.2, color: '#44ff44', unlockLevel: 3, cost: 200 },
+  { name: 'Pulse Shrimp', desc: 'Deep dwellers find it irresistible', depthBonus: 'deep', rarityBonus: 0.1, biteSpeedMod: 1.0, color: '#ff44aa', unlockLevel: 8, cost: 500 },
+  { name: 'Void Squid', desc: 'Lures abyss creatures to the surface', depthBonus: 'abyss', rarityBonus: 0.15, biteSpeedMod: 0.8, color: '#aa44ff', unlockLevel: 12, cost: 1000 },
+  { name: 'Chrome Minnow', desc: 'Rare species can\'t resist the shine', depthBonus: 'none', rarityBonus: 0.2, biteSpeedMod: 0.9, color: '#ffffff', unlockLevel: 18, cost: 2000 },
+  { name: 'Quantum Bait', desc: 'Warps rarity tables in your favor', depthBonus: 'all', rarityBonus: 0.3, biteSpeedMod: 1.1, color: '#ffaa00', unlockLevel: 30, cost: 5000 },
+];
+
+// ─── Tutorial Steps ──────────────────────────────────────────────
+
+interface TutorialStep {
+  num: number; title: string; desc: string; input: string; triggerState: GameState;
+}
+
+const TUTORIAL_STEPS: TutorialStep[] = [
+  { num: 1, title: 'CAST YOUR LINE', desc: 'Hold to charge power, release to cast into the water', input: 'SPACE / TRIGGER', triggerState: 'casting' },
+  { num: 2, title: 'WAIT FOR A BITE', desc: 'Watch the bobber - when it dips, a fish is nibbling!', input: 'PATIENCE...', triggerState: 'waiting' },
+  { num: 3, title: 'HOOK THE FISH', desc: 'Press quickly when you see the bite indicator!', input: 'SPACE / TRIGGER', triggerState: 'biting' },
+  { num: 4, title: 'REEL IT IN', desc: 'Hold to reel. Watch the tension bar - if it maxes out, the line snaps!', input: 'HOLD SPACE / TRIGGER', triggerState: 'fighting' },
+];
 
 // ─── Fish Species Data ───────────────────────────────────────────
 
@@ -132,6 +179,18 @@ class GameStateManager {
   xp: number = 0;
   totalPoints: number = 0;
 
+  // Weather
+  weather: WeatherType = 'clear';
+  weatherTimer: number = 0;
+  weatherCycleTime: number = 120; // seconds between changes
+
+  // Bait
+  currentBait: number = 0;
+
+  // Tutorial
+  tutorialComplete: boolean = false;
+  tutorialStep: number = 0;
+
   // Persistence
   codex: Set<string> = new Set();
   bestScores: { score: number; mode: string; date: string }[] = [];
@@ -141,6 +200,8 @@ class GameStateManager {
     totalCasts: 0, totalLineSnaps: 0, totalEscapes: 0, bestCombo: 0,
     rarestCatch: '', heaviestCatch: 0, heaviestName: '', legendsCaught: 0,
     totalXP: 0, totalPlayTime: 0, dailyStreak: 0, lastDailyDate: '',
+    totalFights: 0, perfectCatches: 0, weatherFished: new Set<string>() as any,
+    baitUsed: new Set<string>() as any,
   };
   volumes = { master: 0.7, sfx: 0.8, music: 0.5 };
 
@@ -154,13 +215,21 @@ class GameStateManager {
         if (s.codex) this.codex = new Set(s.codex);
         if (s.bestScores) this.bestScores = s.bestScores;
         if (s.achievements) this.achievements = new Set(s.achievements);
-        if (s.stats) Object.assign(this.stats, s.stats);
+        if (s.stats) {
+          Object.assign(this.stats, s.stats);
+          if (s.stats.weatherFished) this.stats.weatherFished = new Set(s.stats.weatherFished);
+          else this.stats.weatherFished = new Set();
+          if (s.stats.baitUsed) this.stats.baitUsed = new Set(s.stats.baitUsed);
+          else this.stats.baitUsed = new Set();
+        }
         if (s.volumes) Object.assign(this.volumes, s.volumes);
         if (s.currentRod !== undefined) this.currentRod = s.currentRod;
+        if (s.currentBait !== undefined) this.currentBait = s.currentBait;
         if (s.currentTheme !== undefined) this.currentTheme = s.currentTheme;
         if (s.level !== undefined) this.level = s.level;
         if (s.xp !== undefined) this.xp = s.xp;
         if (s.totalPoints !== undefined) this.totalPoints = s.totalPoints;
+        if (s.tutorialComplete !== undefined) this.tutorialComplete = s.tutorialComplete;
       }
     } catch {}
   }
@@ -169,10 +238,16 @@ class GameStateManager {
     try {
       localStorage.setItem('neon-fishing-save', JSON.stringify({
         codex: [...this.codex], bestScores: this.bestScores.slice(0, 20),
-        achievements: [...this.achievements], stats: this.stats,
+        achievements: [...this.achievements], stats: {
+          ...this.stats,
+          weatherFished: [...(this.stats.weatherFished || [])],
+          baitUsed: [...(this.stats.baitUsed || [])],
+        },
         volumes: this.volumes, currentRod: this.currentRod,
+        currentBait: this.currentBait,
         currentTheme: this.currentTheme, level: this.level,
         xp: this.xp, totalPoints: this.totalPoints,
+        tutorialComplete: this.tutorialComplete,
       }));
     } catch {}
   }
@@ -635,12 +710,16 @@ async function main() {
   createWorldPanel('achievements', '/ui/achievements.json', 0.9, 1.2, [0, 1.5, -2.5]);
   createWorldPanel('settings', '/ui/settings.json', 0.8, 0.9, [0, 1.5, -2.5]);
   createWorldPanel('help', '/ui/help.json', 0.9, 1.2, [0, 1.5, -2.5]);
+  createWorldPanel('stats', '/ui/stats.json', 0.9, 1.2, [0, 1.5, -2.5]);
+  createWorldPanel('bait', '/ui/bait.json', 0.9, 1.2, [0, 1.5, -2.5]);
 
   // HUD panels (Follower head-locked)
   createHUDPanel('hud', '/ui/hud.json', 0.35, 0.15, [0.25, -0.12, -0.5]);
   createHUDPanel('tension', '/ui/tension.json', 0.25, 0.08, [-0.2, -0.15, -0.5]);
   createHUDPanel('toast', '/ui/toast.json', 0.35, 0.06, [0, 0.2, -0.5]);
   createHUDPanel('countdown', '/ui/countdown.json', 0.2, 0.1, [0, 0, -0.5]);
+  createHUDPanel('weather', '/ui/weather.json', 0.2, 0.06, [-0.25, 0.12, -0.5]);
+  createHUDPanel('tutorial', '/ui/tutorial.json', 0.45, 0.25, [0, 0.05, -0.6]);
 
   // Wait for docs to be ready
   function getDoc(name: string): UIKitDocument | null {
@@ -694,7 +773,9 @@ async function main() {
 
   function selectFishForCast(): FishSpecies {
     const r = rod();
-    const luck = r.luckBonus;
+    const b = BAITS[gsm.currentBait];
+    const w = WEATHER_CONDITIONS.find(wc => wc.type === gsm.weather) || WEATHER_CONDITIONS[0];
+    const luck = r.luckBonus + b.rarityBonus + w.rarityMod;
     const depthMap: Record<string, string[]> = {
       surface: ['surface'],
       mid: ['surface', 'mid'],
@@ -707,6 +788,11 @@ async function main() {
     else if (gsm.lineDistance < 8) depth = 'mid';
     else if (gsm.lineDistance < 14) depth = 'deep';
     else depth = 'abyss';
+
+    // Bait depth bonus can extend accessible depths
+    if (b.depthBonus === 'all' || b.depthBonus === 'abyss') depth = 'abyss';
+    else if (b.depthBonus === 'deep' && depth === 'mid') depth = 'deep';
+    else if (b.depthBonus === 'mid' && depth === 'surface') depth = 'mid';
 
     const validDepths = depthMap[depth] || ['surface'];
     let pool = FISH_SPECIES.filter(f => validDepths.includes(f.depth));
@@ -736,12 +822,17 @@ async function main() {
 
   function getWaitTime(): number {
     const base = gsm.difficulty === 'easy' ? 3 : gsm.difficulty === 'medium' ? 5 : 7;
-    return base + Math.random() * (base * 1.5);
+    const w = WEATHER_CONDITIONS.find(wc => wc.type === gsm.weather) || WEATHER_CONDITIONS[0];
+    const b = BAITS[gsm.currentBait];
+    return (base + Math.random() * (base * 1.5)) / (w.biteMod * b.biteSpeedMod);
   }
 
   function startCast(power: number) {
     gsm.totalCasts++;
-    gsm.lineDistance = 2 + power * 0.16; // 2-18m range
+    const w = WEATHER_CONDITIONS.find(wc => wc.type === gsm.weather) || WEATHER_CONDITIONS[0];
+    // Wind adds randomness to cast distance
+    const windVariance = gsm.weather === 'wind' ? (Math.random() - 0.5) * 6 : 0;
+    gsm.lineDistance = Math.max(2, Math.min(20, (2 + power * 0.16) * w.castMod + windVariance));
     const bobX = (Math.random() - 0.5) * 0.5;
     const bobZ = -(2 + gsm.lineDistance);
     bobberGroup.position.set(bobX, 0.05, bobZ);
@@ -822,7 +913,8 @@ async function main() {
     const caught: CaughtFish = { species: f.name, weight: gsm.fishWeight, points: pts, timestamp: Date.now() };
     gsm.sessionCaught.push(caught);
     gsm.codex.add(f.name);
-    gsm.addXP(Math.floor(pts / 10));
+    const xpMult = gsm.weather === 'aurora' ? 1.5 : 1.0;
+    gsm.addXP(Math.floor(pts / 10 * xpMult));
     gsm.stats.totalCaught++;
     gsm.stats.totalWeight += gsm.fishWeight;
     if (gsm.fishWeight > gsm.stats.heaviestCatch) {
@@ -830,6 +922,9 @@ async function main() {
       gsm.stats.heaviestName = f.name;
     }
     if (f.rarity === 'legendary') gsm.stats.legendsCaught++;
+    gsm.stats.totalFights = (gsm.stats.totalFights || 0) + 1;
+    if (gsm.stats.weatherFished instanceof Set) gsm.stats.weatherFished.add(gsm.weather);
+    if (gsm.stats.baitUsed instanceof Set) gsm.stats.baitUsed.add(BAITS[gsm.currentBait].name);
     const rarityRank = ['common', 'uncommon', 'rare', 'epic', 'legendary'];
     if (!gsm.stats.rarestCatch || rarityRank.indexOf(f.rarity) > rarityRank.indexOf(gsm.stats.rarestCatch)) {
       gsm.stats.rarestCatch = f.rarity;
@@ -999,6 +1094,231 @@ async function main() {
     });
   }
 
+  // ─── Stats Panel ──────────────────────────────────────────────
+
+  function updateStatsPanel() {
+    const doc = getDoc('stats');
+    if (!doc) return;
+    setText(doc, 'st-games', `${gsm.stats.gamesPlayed}`);
+    setText(doc, 'st-caught', `${gsm.stats.totalCaught}`);
+    setText(doc, 'st-weight', `${Math.round(gsm.stats.totalWeight * 100) / 100} kg`);
+    setText(doc, 'st-casts', `${gsm.stats.totalCasts}`);
+    setText(doc, 'st-snaps', `${gsm.stats.totalLineSnaps}`);
+    setText(doc, 'st-escapes', `${gsm.stats.totalEscapes}`);
+    setText(doc, 'st-best', `${gsm.stats.bestScore}`);
+    setText(doc, 'st-combo', `${gsm.stats.bestCombo}`);
+    setText(doc, 'st-heavy', gsm.stats.heaviestName ? `${gsm.stats.heaviestName} (${gsm.stats.heaviestCatch} kg)` : '---');
+    setText(doc, 'st-rarest', gsm.stats.rarestCatch ? gsm.stats.rarestCatch.toUpperCase() : '---');
+    setText(doc, 'st-legends', `${gsm.stats.legendsCaught}`);
+    setText(doc, 'st-level', `${gsm.level}`);
+    setText(doc, 'st-xp', `${gsm.stats.totalXP}`);
+    setText(doc, 'st-species', `${gsm.codex.size} / ${FISH_SPECIES.length}`);
+    setText(doc, 'st-achs', `${gsm.achievements.size} / ${ACHIEVEMENTS.length}`);
+    const hrs = Math.floor(gsm.stats.totalPlayTime / 3600);
+    const mins = Math.floor((gsm.stats.totalPlayTime % 3600) / 60);
+    setText(doc, 'st-time', `${hrs}h ${mins}m`);
+  }
+
+  // ─── Bait Panel ───────────────────────────────────────────────
+
+  function updateBaitPanel() {
+    const doc = getDoc('bait');
+    if (!doc) return;
+    BAITS.forEach((b, i) => {
+      const unlocked = gsm.level >= b.unlockLevel;
+      const equipped = gsm.currentBait === i;
+      setText(doc, `bait-name-${i}`, unlocked ? b.name : `Locked (Lv ${b.unlockLevel})`);
+      setText(doc, `bait-desc-${i}`, unlocked ? b.desc : '???');
+      setText(doc, `bait-status-${i}`, equipped ? 'EQUIPPED' : unlocked ? 'SELECT' : `Lv ${b.unlockLevel}`);
+    });
+  }
+
+  // ─── Weather System ───────────────────────────────────────────
+
+  function cycleWeather() {
+    const pool = WEATHER_CONDITIONS.filter(w => w.type !== gsm.weather);
+    const next = pool[Math.floor(Math.random() * pool.length)];
+    gsm.weather = next.type;
+    updateWeatherHUD();
+    showToast(`Weather: ${next.name}`);
+    audio.buttonClick();
+  }
+
+  function updateWeatherHUD() {
+    const doc = getDoc('weather');
+    const w = WEATHER_CONDITIONS.find(wc => wc.type === gsm.weather) || WEATHER_CONDITIONS[0];
+    setText(doc, 'weather-icon', w.icon);
+    setText(doc, 'weather-name', w.name);
+    setText(doc, 'weather-effect', w.effect);
+  }
+
+  // ─── Tutorial System ──────────────────────────────────────────
+
+  function updateTutorialPanel() {
+    const doc = getDoc('tutorial');
+    if (!doc) return;
+    const step = TUTORIAL_STEPS[gsm.tutorialStep] || TUTORIAL_STEPS[0];
+    setText(doc, 'tut-step-num', `${step.num}`);
+    setText(doc, 'tut-step-title', step.title);
+    setText(doc, 'tut-step-desc', step.desc);
+    setText(doc, 'tut-step-input', step.input);
+    setText(doc, 'tut-progress', `Step ${step.num} of ${TUTORIAL_STEPS.length}`);
+  }
+
+  function advanceTutorial(currentState: GameState) {
+    if (gsm.tutorialComplete) return;
+    const step = TUTORIAL_STEPS[gsm.tutorialStep];
+    if (step && currentState === step.triggerState) {
+      gsm.tutorialStep++;
+      if (gsm.tutorialStep >= TUTORIAL_STEPS.length) {
+        gsm.tutorialComplete = true;
+        gsm.save();
+        panels.tutorial.entity.object3D.visible = false;
+        showToast('Tutorial complete!');
+      } else {
+        updateTutorialPanel();
+      }
+    }
+  }
+
+  // ─── Rain Particle System ─────────────────────────────────────
+
+  const rainDrops: Mesh[] = [];
+  const maxRainDrops = 80;
+
+  function createRainSystem() {
+    const rainMat = new MeshBasicMaterial({
+      color: new Color('#4488ff'), transparent: true, opacity: 0.4, blending: AdditiveBlending,
+    });
+    for (let i = 0; i < maxRainDrops; i++) {
+      const drop = new Mesh(new CylinderGeometry(0.005, 0.005, 0.15, 4), rainMat.clone());
+      drop.position.set((Math.random() - 0.5) * 20, 4 + Math.random() * 4, -5 + (Math.random() - 0.5) * 20);
+      drop.visible = false;
+      world.scene.add(drop);
+      rainDrops.push(drop);
+    }
+  }
+  createRainSystem();
+
+  function updateRain(dt: number) {
+    const isRaining = gsm.weather === 'rain' || gsm.weather === 'storm';
+    const intensity = gsm.weather === 'storm' ? 1.0 : gsm.weather === 'rain' ? 0.6 : 0;
+    rainDrops.forEach((drop, i) => {
+      drop.visible = isRaining && i < maxRainDrops * intensity;
+      if (!drop.visible) return;
+      drop.position.y -= (8 + Math.random() * 4) * dt;
+      if (drop.position.y < -0.5) {
+        drop.position.y = 4 + Math.random() * 3;
+        drop.position.x = (Math.random() - 0.5) * 20;
+        drop.position.z = -5 + (Math.random() - 0.5) * 20;
+      }
+      (drop.material as MeshBasicMaterial).opacity = intensity * (0.2 + Math.random() * 0.3);
+    });
+  }
+
+  // ─── Fish Jump Animation ──────────────────────────────────────
+
+  let jumpingFishGroup: Group | null = null;
+  let jumpTimer = 0;
+  let jumpActive = false;
+  let jumpPhase = 0;
+  let jumpStartPos = new Vector3();
+
+  function createJumpingFish() {
+    jumpingFishGroup = new Group();
+    const jBody = new Mesh(
+      new SphereGeometry(0.1, 8, 6),
+      new MeshStandardMaterial({ color: 0x00ffff, emissive: 0x004444, emissiveIntensity: 0.5, wireframe: true })
+    );
+    jBody.scale.set(1.5, 1, 1);
+    jumpingFishGroup.add(jBody);
+    const jTail = new Mesh(
+      new ConeGeometry(0.07, 0.1, 4),
+      new MeshBasicMaterial({ color: 0x00ffff, wireframe: true, transparent: true, opacity: 0.6 })
+    );
+    jTail.rotation.z = Math.PI / 2;
+    jTail.position.set(-0.15, 0, 0);
+    jumpingFishGroup.add(jTail);
+    jumpingFishGroup.visible = false;
+    world.scene.add(jumpingFishGroup);
+  }
+  createJumpingFish();
+
+  function updateFishJump(dt: number) {
+    if (!jumpingFishGroup) return;
+    const isWaiting = gsm.state === 'waiting' || gsm.state === 'casting';
+    if (!isWaiting) { jumpingFishGroup.visible = false; return; }
+
+    jumpTimer -= dt;
+    if (!jumpActive && jumpTimer <= 0) {
+      // Trigger a jump
+      jumpActive = true;
+      jumpPhase = 0;
+      jumpStartPos.set(
+        (Math.random() - 0.5) * 12,
+        0,
+        -4 + (Math.random() - 0.5) * 10
+      );
+      jumpingFishGroup.visible = true;
+      jumpingFishGroup.position.copy(jumpStartPos);
+      // Randomize color from theme
+      const t = theme();
+      const colors = [t.accent, t.glow, t.fish];
+      const c = colors[Math.floor(Math.random() * colors.length)];
+      (jumpingFishGroup.children[0] as Mesh).material = new MeshStandardMaterial({
+        color: new Color(c), emissive: new Color(c), emissiveIntensity: 0.3, wireframe: true,
+      });
+      (jumpingFishGroup.children[1] as Mesh).material = new MeshBasicMaterial({
+        color: new Color(c), wireframe: true, transparent: true, opacity: 0.6,
+      });
+      audio.splash();
+    }
+
+    if (jumpActive) {
+      jumpPhase += dt * 2.5;
+      const arcHeight = 1.2;
+      const arcDuration = Math.PI;
+      if (jumpPhase >= arcDuration) {
+        jumpActive = false;
+        jumpingFishGroup.visible = false;
+        jumpTimer = 5 + Math.random() * 10; // Next jump in 5-15 seconds
+        particles.ripple(jumpStartPos.clone(), theme().accent);
+      } else {
+        const y = Math.sin(jumpPhase) * arcHeight;
+        const fwd = (jumpPhase / arcDuration) * 1.5;
+        jumpingFishGroup.position.set(jumpStartPos.x + fwd, y, jumpStartPos.z);
+        jumpingFishGroup.rotation.z = Math.cos(jumpPhase) * 0.5;
+      }
+    }
+  }
+
+  // ─── Cast Arc Visualization ───────────────────────────────────
+
+  const arcPoints: Vector3[] = [];
+  for (let i = 0; i <= 20; i++) arcPoints.push(new Vector3());
+  const arcGeo = new BufferGeometry().setFromPoints(arcPoints);
+  const arcMesh = new Line(arcGeo, new LineBasicMaterial({
+    color: new Color(theme().accent), transparent: true, opacity: 0.4, blending: AdditiveBlending,
+  }));
+  arcMesh.visible = false;
+  world.scene.add(arcMesh);
+
+  function updateCastArc(power: number) {
+    if (!gsm.castCharging || power < 5) { arcMesh.visible = false; return; }
+    arcMesh.visible = true;
+    const dist = 2 + power * 0.16;
+    const peakH = 1 + dist * 0.15;
+    const pos = arcGeo.attributes.position as Float32BufferAttribute;
+    for (let i = 0; i <= 20; i++) {
+      const t = i / 20;
+      const x = (Math.random() - 0.5) * 0.02;
+      const y = 0.9 + Math.sin(t * Math.PI) * peakH - t * 0.9;
+      const z = -0.5 - t * dist;
+      pos.setXYZ(i, x, y, z);
+    }
+    pos.needsUpdate = true;
+  }
+
   // ─── Achievements ────────────────────────────────────────────
 
   const ACHIEVEMENTS: Achievement[] = [
@@ -1032,6 +1352,20 @@ async function main() {
     { id: 'trophy_done', name: 'Trophy Hunter', desc: 'Complete a trophy hunt', check: () => gsm.trophyCaught },
     { id: 'no_snap', name: 'Steady Hands', desc: 'Complete a session with 0 line snaps', check: () => gsm.lineSnaps === 0 && gsm.sessionCaught.length >= 3 },
     { id: 'legends_3', name: 'Legend Slayer', desc: 'Catch 3 legendary fish total', check: () => gsm.stats.legendsCaught >= 3 },
+    // New achievements
+    { id: 'weather_rain', name: 'Rain Fisher', desc: 'Catch a fish during Neon Rain', check: () => gsm.weather === 'rain' && gsm.sessionCaught.length > 0 },
+    { id: 'weather_storm', name: 'Storm Chaser', desc: 'Catch a fish during an Ion Storm', check: () => gsm.weather === 'storm' && gsm.sessionCaught.length > 0 },
+    { id: 'weather_all', name: 'All-Weather Angler', desc: 'Fish in every weather condition', check: () => (gsm.stats.weatherFished?.size || 0) >= 6 },
+    { id: 'bait_all', name: 'Tackle Master', desc: 'Use every bait type', check: () => (gsm.stats.baitUsed?.size || 0) >= 6 },
+    { id: 'catch_5_session', name: 'Hot Streak', desc: 'Catch 5 fish in one session', check: () => gsm.sessionCaught.length >= 5 },
+    { id: 'catch_10_session', name: 'On Fire', desc: 'Catch 10 fish in one session', check: () => gsm.sessionCaught.length >= 10 },
+    { id: 'catch_20_session', name: 'Unstoppable', desc: 'Catch 20 fish in one session', check: () => gsm.sessionCaught.length >= 20 },
+    { id: 'weight_100', name: 'Centennial Haul', desc: 'Accumulate 100 kg total weight', check: () => gsm.stats.totalWeight >= 100 },
+    { id: 'weight_500', name: 'Half Ton', desc: 'Accumulate 500 kg total weight', check: () => gsm.stats.totalWeight >= 500 },
+    { id: 'score_25k', name: 'Score Legend', desc: 'Score 25,000 in a single session', check: () => gsm.score >= 25000 },
+    { id: 'zen_master', name: 'Zen Master', desc: 'Catch 10 fish in Zen mode', check: () => gsm.mode === 'zen' && gsm.sessionCaught.length >= 10 },
+    { id: 'tournament_win', name: 'Tournament Victor', desc: 'Score 3,000+ in tournament mode', check: () => gsm.mode === 'tournament' && gsm.score >= 3000 },
+    { id: 'speed_cast', name: 'Quick Draw', desc: 'Hook a fish within 2 seconds of cast', check: () => gsm.state === 'biting' && gsm.waitTimer > -2 },
   ];
 
   function checkAchievements() {
@@ -1084,8 +1418,9 @@ async function main() {
         (rodPole.material as MeshStandardMaterial).color.set(rod().color);
         (rodPole.material as MeshStandardMaterial).emissive.set(rod().color);
         (rodTip.material as MeshBasicMaterial).color.set(rod().color);
-        showPanels('hud');
+        showPanels('hud', 'weather');
         updateHUD();
+        updateWeatherHUD();
         audio.init();
         audio.setVolumes(gsm.volumes);
         audio.startDrone();
@@ -1111,6 +1446,19 @@ async function main() {
         break;
       case 'pause':
         showPanel('pause');
+        break;
+      case 'stats':
+        updateStatsPanel();
+        showPanel('stats');
+        break;
+      case 'bait':
+        updateBaitPanel();
+        showPanel('bait');
+        break;
+      case 'tutorial':
+        gsm.tutorialStep = 0;
+        updateTutorialPanel();
+        showPanel('tutorial');
         break;
       case 'gameover':
         // handled in endGame
@@ -1152,6 +1500,8 @@ async function main() {
     setBtn(td, 'btn-rods', () => { audio.init(); audio.buttonClick(); goToState('rods'); });
     setBtn(td, 'btn-settings', () => { audio.init(); audio.buttonClick(); goToState('settings'); });
     setBtn(td, 'btn-help', () => { audio.init(); audio.buttonClick(); goToState('help'); });
+    setBtn(td, 'btn-stats', () => { audio.init(); audio.buttonClick(); goToState('stats'); });
+    setBtn(td, 'btn-bait', () => { audio.init(); audio.buttonClick(); goToState('bait'); });
 
     // Mode select
     const md = getDoc('modeselect');
@@ -1232,11 +1582,33 @@ async function main() {
     }
 
     // Back buttons
-    const backPanels = ['codex', 'leaderboard', 'achievements', 'help'];
+    const backPanels = ['codex', 'leaderboard', 'achievements', 'help', 'stats'];
     backPanels.forEach(name => {
       const d = getDoc(name);
       if (d) setBtn(d, `btn-back-${name}`, () => { audio.buttonClick(); goToState('title'); });
     });
+
+    // Bait panel
+    const bd = getDoc('bait');
+    if (bd) {
+      BAITS.forEach((_, i) => {
+        setBtn(bd, `btn-bait-${i}`, () => {
+          if (gsm.level >= BAITS[i].unlockLevel) { gsm.currentBait = i; audio.buttonClick(); updateBaitPanel(); gsm.save(); }
+        });
+      });
+      setBtn(bd, 'btn-back-bait', () => { audio.buttonClick(); goToState('title'); });
+    }
+
+    // Tutorial skip
+    const tutDoc = getDoc('tutorial');
+    if (tutDoc) {
+      setBtn(tutDoc, 'btn-tut-skip', () => {
+        gsm.tutorialComplete = true;
+        gsm.save();
+        panels.tutorial.entity.object3D.visible = false;
+        audio.buttonClick();
+      });
+    }
 
     buttonsWired = true;
   }
@@ -1294,6 +1666,39 @@ async function main() {
     // Particles
     particles.update(dt);
 
+    // Weather cycling
+    if (['casting', 'waiting', 'biting', 'fighting'].includes(gsm.state)) {
+      gsm.weatherTimer += dt;
+      if (gsm.weatherTimer >= gsm.weatherCycleTime) {
+        gsm.weatherTimer = 0;
+        cycleWeather();
+      }
+    }
+
+    // Rain effect
+    updateRain(dt);
+
+    // Fish jump animation
+    updateFishJump(dt);
+
+    // Tutorial advancement
+    if (!gsm.tutorialComplete && ['casting', 'waiting', 'biting', 'fighting'].includes(gsm.state)) {
+      advanceTutorial(gsm.state);
+      if (!gsm.tutorialComplete) {
+        panels.tutorial.entity.object3D.visible = true;
+      }
+    }
+
+    // Fog effect for weather
+    if (gsm.weather === 'fog') {
+      const t = theme();
+      if (world.scene.fog) (world.scene.fog as any).far = 20;
+    } else if (gsm.weather === 'storm') {
+      if (world.scene.fog) (world.scene.fog as any).far = 25;
+    } else {
+      if (world.scene.fog) (world.scene.fog as any).far = 40;
+    }
+
     // Toast timer
     if (toastTimer > 0) {
       toastTimer -= dt;
@@ -1328,8 +1733,10 @@ async function main() {
         castRing.scale.setScalar(0.5 + gsm.castPower * 0.01);
         chargeHumTimer -= dt;
         if (chargeHumTimer <= 0) { audio.chargeHum(gsm.castPower); chargeHumTimer = 0.1; }
+        updateCastArc(gsm.castPower);
       } else {
         castRing.visible = false;
+        arcMesh.visible = false;
       }
       rodGroup.visible = true;
       // Rod animation during charge
@@ -1418,7 +1825,8 @@ async function main() {
       if (gsm.reeling) {
         const reelRate = rod().reelSpeed * (0.5 + (1 - fightForce) * 0.5);
         gsm.fishDistance -= reelRate * dt * 2;
-        gsm.tension += dt * 15 * (1 + fightForce);
+        const stormTensionMod = gsm.weather === 'storm' ? 1.3 : 1.0;
+        gsm.tension += dt * 15 * (1 + fightForce) * stormTensionMod;
         reelClickTimer -= dt;
         if (reelClickTimer <= 0) { audio.reelClick(); reelClickTimer = 0.15; }
       } else {
@@ -1450,7 +1858,7 @@ async function main() {
 
       updateTensionBar();
       updateHUD();
-      showPanels('hud', 'tension');
+      showPanels('hud', 'tension', 'weather');
 
       // Time attack timer
       if (gsm.mode === 'timeattack' || gsm.mode === 'daily') {

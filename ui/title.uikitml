@@ -66,6 +66,12 @@
   <div id="btn-achievements" class="btn btn-pink">
     <span class="btn-text">ACHIEVEMENTS</span>
   </div>
+  <div id="btn-stats" class="btn">
+    <span class="btn-text">CAREER STATS</span>
+  </div>
+  <div id="btn-bait" class="btn btn-green">
+    <span class="btn-text">TACKLE BOX</span>
+  </div>
   <div id="btn-settings" class="btn">
     <span class="btn-text">SETTINGS</span>
   </div>

@@ -1,0 +1,28 @@
+<style>
+  .weather-hud {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5;
+    padding-bottom: 0.5;
+    padding-left: 1.5;
+    padding-right: 1.5;
+    background-color: rgba(0, 10, 20, 0.8);
+    border-color: #4488ff;
+    border-width: 0.05;
+    border-radius: 0.5;
+  }
+  .weather-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .icon { font-size: 1.2; color: #4488ff; }
+  .condition { font-size: 1.1; color: #88bbff; margin-left: 0.3; }
+  .effect { font-size: 0.9; color: #668888; margin-top: 0.2; }
+</style>
+<div class="weather-hud">
+  <div class="weather-row">
+    <span id="weather-icon" class="icon">~</span>
+    <span id="weather-name" class="condition">Clear</span>
+  </div>
+  <span id="weather-effect" class="effect">No effect</span>
+</div>

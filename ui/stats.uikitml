@@ -1,0 +1,112 @@
+<style>
+  .stats-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2;
+    padding-bottom: 2;
+    padding-left: 3;
+    padding-right: 3;
+    background-color: rgba(0, 10, 20, 0.95);
+    border-color: #00ffff;
+    border-width: 0.1;
+    border-radius: 1.5;
+  }
+  .heading { font-size: 2.5; color: #00ffff; font-weight: bold; }
+  .section { font-size: 1.5; color: #44aaaa; margin-top: 1; font-weight: bold; }
+  .stat-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.4;
+  }
+  .label { font-size: 1.1; color: #668888; }
+  .value { font-size: 1.2; color: #00ffff; font-weight: bold; margin-left: 0.5; }
+  .gold { color: #ffaa00; }
+  .green { color: #44ff44; }
+  .back-btn {
+    margin-top: 1.5;
+    padding-top: 0.5;
+    padding-bottom: 0.5;
+    padding-left: 2;
+    padding-right: 2;
+    background-color: rgba(60, 30, 0, 0.6);
+    border-color: #ffaa00;
+    border-width: 0.05;
+    border-radius: 0.5;
+    cursor: pointer;
+  }
+  .back-text { font-size: 1.3; color: #ffaa00; }
+</style>
+<div class="stats-panel">
+  <span class="heading">CAREER STATS</span>
+  <span class="section">FISHING</span>
+  <div class="stat-row">
+    <span class="label">Games Played</span>
+    <span id="st-games" class="value">0</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Total Fish</span>
+    <span id="st-caught" class="value">0</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Total Weight</span>
+    <span id="st-weight" class="value green">0 kg</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Total Casts</span>
+    <span id="st-casts" class="value">0</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Line Snaps</span>
+    <span id="st-snaps" class="value">0</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Escapes</span>
+    <span id="st-escapes" class="value">0</span>
+  </div>
+  <span class="section">RECORDS</span>
+  <div class="stat-row">
+    <span class="label">Best Score</span>
+    <span id="st-best" class="value gold">0</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Best Combo</span>
+    <span id="st-combo" class="value gold">0</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Heaviest</span>
+    <span id="st-heavy" class="value gold">---</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Rarest</span>
+    <span id="st-rarest" class="value gold">---</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Legends</span>
+    <span id="st-legends" class="value gold">0</span>
+  </div>
+  <span class="section">PROGRESS</span>
+  <div class="stat-row">
+    <span class="label">Level</span>
+    <span id="st-level" class="value green">1</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Total XP</span>
+    <span id="st-xp" class="value green">0</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Species Found</span>
+    <span id="st-species" class="value green">0/15</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Achievements</span>
+    <span id="st-achs" class="value green">0/45</span>
+  </div>
+  <div class="stat-row">
+    <span class="label">Play Time</span>
+    <span id="st-time" class="value">0h 0m</span>
+  </div>
+  <div id="btn-back-stats" class="back-btn">
+    <span class="back-text">BACK</span>
+  </div>
+</div>
