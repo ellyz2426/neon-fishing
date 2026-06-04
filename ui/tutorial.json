@@ -1,0 +1,369 @@
+{
+  "element": {
+    "type": "container",
+    "sourceTag": "div",
+    "children": [
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "HOW TO FISH"
+        ],
+        "properties": {
+          "class": "heading"
+        },
+        "dataUid": "uid-2"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "1"
+        ],
+        "properties": {
+          "id": "tut-step-num",
+          "class": "step-num"
+        },
+        "dataUid": "uid-3"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "CAST YOUR LINE"
+        ],
+        "properties": {
+          "id": "tut-step-title",
+          "class": "step-title"
+        },
+        "dataUid": "uid-4"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "Hold SPACE or TRIGGER to charge, release to cast"
+        ],
+        "properties": {
+          "id": "tut-step-desc",
+          "class": "step-desc"
+        },
+        "dataUid": "uid-5"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "SPACE / TRIGGER"
+        ],
+        "properties": {
+          "id": "tut-step-input",
+          "class": "step-input"
+        },
+        "dataUid": "uid-6"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "Step 1 of 4"
+        ],
+        "properties": {
+          "id": "tut-progress",
+          "class": "progress"
+        },
+        "dataUid": "uid-7"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "SKIP TUTORIAL"
+            ],
+            "properties": {
+              "class": "btn-text"
+            },
+            "dataUid": "uid-9"
+          }
+        ],
+        "properties": {
+          "id": "btn-tut-skip",
+          "class": "btn"
+        },
+        "dataUid": "uid-8"
+      }
+    ],
+    "properties": {
+      "class": "tutorial-panel"
+    },
+    "dataUid": "uid-1"
+  },
+  "classes": {
+    "tutorial-panel": {
+      "content": {
+        "display": "flex",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "paddingTop": "2",
+        "paddingBottom": "2",
+        "paddingLeft": "4",
+        "paddingRight": "4",
+        "backgroundColor": "rgba(0, 10, 30, 0.95)",
+        "borderColor": "#ffaa00",
+        "borderWidth": "0.1",
+        "borderRadius": 1.5
+      }
+    },
+    "heading": {
+      "content": {
+        "fontSize": "2.5",
+        "color": "#ffaa00",
+        "fontWeight": "bold"
+      }
+    },
+    "step-num": {
+      "content": {
+        "fontSize": "3",
+        "color": "#00ffff",
+        "fontWeight": "bold",
+        "marginTop": "1"
+      }
+    },
+    "step-title": {
+      "content": {
+        "fontSize": "2",
+        "color": "#00ffff",
+        "fontWeight": "bold",
+        "marginTop": "0.5"
+      }
+    },
+    "step-desc": {
+      "content": {
+        "fontSize": "1.3",
+        "color": "#88aaaa",
+        "marginTop": "0.5"
+      }
+    },
+    "step-input": {
+      "content": {
+        "fontSize": "1.5",
+        "color": "#ffaa00",
+        "fontWeight": "bold",
+        "marginTop": "0.8"
+      }
+    },
+    "progress": {
+      "content": {
+        "fontSize": "1",
+        "color": "#668888",
+        "marginTop": "1"
+      }
+    },
+    "btn": {
+      "content": {
+        "marginTop": "1",
+        "paddingTop": "0.6",
+        "paddingBottom": "0.6",
+        "paddingLeft": "2",
+        "paddingRight": "2",
+        "backgroundColor": "rgba(60, 40, 0, 0.6)",
+        "borderColor": "#ffaa00",
+        "borderWidth": "0.05",
+        "borderRadius": 0.5,
+        "cursor": "pointer"
+      }
+    },
+    "btn-text": {
+      "content": {
+        "fontSize": "1.3",
+        "color": "#ffaa00"
+      }
+    }
+  },
+  "ranges": {
+    "tutorial-panel": {
+      "start": {
+        "line": 1,
+        "column": 2
+      },
+      "end": {
+        "line": 1,
+        "column": 17
+      }
+    },
+    "heading": {
+      "start": {
+        "line": 14,
+        "column": 2
+      },
+      "end": {
+        "line": 14,
+        "column": 10
+      }
+    },
+    "step-num": {
+      "start": {
+        "line": 15,
+        "column": 2
+      },
+      "end": {
+        "line": 15,
+        "column": 11
+      }
+    },
+    "step-title": {
+      "start": {
+        "line": 16,
+        "column": 2
+      },
+      "end": {
+        "line": 16,
+        "column": 13
+      }
+    },
+    "step-desc": {
+      "start": {
+        "line": 17,
+        "column": 2
+      },
+      "end": {
+        "line": 17,
+        "column": 12
+      }
+    },
+    "step-input": {
+      "start": {
+        "line": 18,
+        "column": 2
+      },
+      "end": {
+        "line": 18,
+        "column": 13
+      }
+    },
+    "progress": {
+      "start": {
+        "line": 19,
+        "column": 2
+      },
+      "end": {
+        "line": 19,
+        "column": 11
+      }
+    },
+    "btn": {
+      "start": {
+        "line": 20,
+        "column": 2
+      },
+      "end": {
+        "line": 20,
+        "column": 6
+      }
+    },
+    "btn-text": {
+      "start": {
+        "line": 32,
+        "column": 2
+      },
+      "end": {
+        "line": 32,
+        "column": 11
+      }
+    },
+    "uid-1": {
+      "start": {
+        "line": 34,
+        "column": 0
+      },
+      "end": {
+        "line": 44,
+        "column": 6
+      }
+    },
+    "uid-2": {
+      "start": {
+        "line": 35,
+        "column": 2
+      },
+      "end": {
+        "line": 35,
+        "column": 42
+      }
+    },
+    "uid-3": {
+      "start": {
+        "line": 36,
+        "column": 2
+      },
+      "end": {
+        "line": 36,
+        "column": 51
+      }
+    },
+    "uid-4": {
+      "start": {
+        "line": 37,
+        "column": 2
+      },
+      "end": {
+        "line": 37,
+        "column": 68
+      }
+    },
+    "uid-5": {
+      "start": {
+        "line": 38,
+        "column": 2
+      },
+      "end": {
+        "line": 38,
+        "column": 100
+      }
+    },
+    "uid-6": {
+      "start": {
+        "line": 39,
+        "column": 2
+      },
+      "end": {
+        "line": 39,
+        "column": 69
+      }
+    },
+    "uid-7": {
+      "start": {
+        "line": 40,
+        "column": 2
+      },
+      "end": {
+        "line": 40,
+        "column": 61
+      }
+    },
+    "uid-8": {
+      "start": {
+        "line": 41,
+        "column": 2
+      },
+      "end": {
+        "line": 43,
+        "column": 8
+      }
+    },
+    "uid-9": {
+      "start": {
+        "line": 42,
+        "column": 4
+      },
+      "end": {
+        "line": 42,
+        "column": 47
+      }
+    }
+  }
+}

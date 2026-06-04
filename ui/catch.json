@@ -1,0 +1,480 @@
+{
+  "element": {
+    "type": "container",
+    "sourceTag": "div",
+    "children": [
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "FISH CAUGHT!"
+        ],
+        "properties": {
+          "class": "heading"
+        },
+        "dataUid": "uid-2"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "---"
+        ],
+        "properties": {
+          "id": "fish-name",
+          "class": "fish-name"
+        },
+        "dataUid": "uid-3"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "---"
+        ],
+        "properties": {
+          "id": "fish-rarity",
+          "class": "rarity"
+        },
+        "dataUid": "uid-4"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "WEIGHT"
+            ],
+            "properties": {
+              "class": "label"
+            },
+            "dataUid": "uid-6"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "---"
+            ],
+            "properties": {
+              "id": "fish-weight",
+              "class": "value"
+            },
+            "dataUid": "uid-7"
+          }
+        ],
+        "properties": {
+          "class": "stat-row"
+        },
+        "dataUid": "uid-5"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "+0"
+        ],
+        "properties": {
+          "id": "fish-points",
+          "class": "points"
+        },
+        "dataUid": "uid-8"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [],
+        "properties": {
+          "id": "fish-combo",
+          "class": "combo-text"
+        },
+        "dataUid": "uid-9"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [],
+        "properties": {
+          "id": "fish-new",
+          "class": "new-text"
+        },
+        "dataUid": "uid-10"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "CONTINUE"
+            ],
+            "properties": {
+              "class": "btn-text"
+            },
+            "dataUid": "uid-12"
+          }
+        ],
+        "properties": {
+          "id": "btn-continue",
+          "class": "btn"
+        },
+        "dataUid": "uid-11"
+      }
+    ],
+    "properties": {
+      "class": "catch-panel"
+    },
+    "dataUid": "uid-1"
+  },
+  "classes": {
+    "catch-panel": {
+      "content": {
+        "display": "flex",
+        "flexDirection": "column",
+        "alignItems": "center",
+        "paddingTop": "3",
+        "paddingBottom": "3",
+        "paddingLeft": "4",
+        "paddingRight": "4",
+        "backgroundColor": "rgba(0, 10, 20, 0.95)",
+        "borderColor": "#44ff44",
+        "borderWidth": "0.1",
+        "borderRadius": 1.5
+      }
+    },
+    "heading": {
+      "content": {
+        "fontSize": "3",
+        "color": "#44ff44",
+        "fontWeight": "bold"
+      }
+    },
+    "fish-name": {
+      "content": {
+        "fontSize": "2.5",
+        "color": "#00ffff",
+        "fontWeight": "bold",
+        "marginTop": "1"
+      }
+    },
+    "rarity": {
+      "content": {
+        "fontSize": "1.5",
+        "color": "#ffaa00",
+        "marginTop": "0.5"
+      }
+    },
+    "stat-row": {
+      "content": {
+        "display": "flex",
+        "flexDirection": "row",
+        "marginTop": "0.5"
+      }
+    },
+    "label": {
+      "content": {
+        "fontSize": "1.3",
+        "color": "#668888"
+      }
+    },
+    "value": {
+      "content": {
+        "fontSize": "1.5",
+        "color": "#00ffff",
+        "fontWeight": "bold",
+        "marginLeft": "0.5"
+      }
+    },
+    "points": {
+      "content": {
+        "fontSize": "2",
+        "color": "#ffaa00",
+        "fontWeight": "bold",
+        "marginTop": "0.8"
+      }
+    },
+    "combo-text": {
+      "content": {
+        "fontSize": "1.5",
+        "color": "#ff44aa",
+        "marginTop": "0.3"
+      }
+    },
+    "new-text": {
+      "content": {
+        "fontSize": "1.5",
+        "color": "#44ff44",
+        "fontWeight": "bold",
+        "marginTop": "0.5"
+      }
+    },
+    "btn": {
+      "content": {
+        "marginTop": "1.5",
+        "paddingTop": "0.8",
+        "paddingBottom": "0.8",
+        "paddingLeft": "3",
+        "paddingRight": "3",
+        "backgroundColor": "rgba(0, 60, 60, 0.6)",
+        "borderColor": "#00ffff",
+        "borderWidth": "0.05",
+        "borderRadius": 0.5,
+        "cursor": "pointer"
+      }
+    },
+    "btn-text": {
+      "content": {
+        "fontSize": "1.8",
+        "color": "#00ffff",
+        "fontWeight": "bold"
+      }
+    }
+  },
+  "ranges": {
+    "catch-panel": {
+      "start": {
+        "line": 1,
+        "column": 2
+      },
+      "end": {
+        "line": 1,
+        "column": 14
+      }
+    },
+    "heading": {
+      "start": {
+        "line": 14,
+        "column": 2
+      },
+      "end": {
+        "line": 14,
+        "column": 10
+      }
+    },
+    "fish-name": {
+      "start": {
+        "line": 19,
+        "column": 2
+      },
+      "end": {
+        "line": 19,
+        "column": 12
+      }
+    },
+    "rarity": {
+      "start": {
+        "line": 25,
+        "column": 2
+      },
+      "end": {
+        "line": 25,
+        "column": 9
+      }
+    },
+    "stat-row": {
+      "start": {
+        "line": 30,
+        "column": 2
+      },
+      "end": {
+        "line": 30,
+        "column": 11
+      }
+    },
+    "label": {
+      "start": {
+        "line": 35,
+        "column": 2
+      },
+      "end": {
+        "line": 35,
+        "column": 8
+      }
+    },
+    "value": {
+      "start": {
+        "line": 36,
+        "column": 2
+      },
+      "end": {
+        "line": 36,
+        "column": 8
+      }
+    },
+    "points": {
+      "start": {
+        "line": 37,
+        "column": 2
+      },
+      "end": {
+        "line": 37,
+        "column": 9
+      }
+    },
+    "combo-text": {
+      "start": {
+        "line": 38,
+        "column": 2
+      },
+      "end": {
+        "line": 38,
+        "column": 13
+      }
+    },
+    "new-text": {
+      "start": {
+        "line": 39,
+        "column": 2
+      },
+      "end": {
+        "line": 39,
+        "column": 11
+      }
+    },
+    "btn": {
+      "start": {
+        "line": 40,
+        "column": 2
+      },
+      "end": {
+        "line": 40,
+        "column": 6
+      }
+    },
+    "btn-text": {
+      "start": {
+        "line": 52,
+        "column": 2
+      },
+      "end": {
+        "line": 52,
+        "column": 11
+      }
+    },
+    "uid-1": {
+      "start": {
+        "line": 54,
+        "column": 0
+      },
+      "end": {
+        "line": 68,
+        "column": 6
+      }
+    },
+    "uid-2": {
+      "start": {
+        "line": 55,
+        "column": 2
+      },
+      "end": {
+        "line": 55,
+        "column": 43
+      }
+    },
+    "uid-3": {
+      "start": {
+        "line": 56,
+        "column": 2
+      },
+      "end": {
+        "line": 56,
+        "column": 51
+      }
+    },
+    "uid-4": {
+      "start": {
+        "line": 57,
+        "column": 2
+      },
+      "end": {
+        "line": 57,
+        "column": 50
+      }
+    },
+    "uid-5": {
+      "start": {
+        "line": 58,
+        "column": 2
+      },
+      "end": {
+        "line": 61,
+        "column": 8
+      }
+    },
+    "uid-6": {
+      "start": {
+        "line": 59,
+        "column": 4
+      },
+      "end": {
+        "line": 59,
+        "column": 37
+      }
+    },
+    "uid-7": {
+      "start": {
+        "line": 60,
+        "column": 4
+      },
+      "end": {
+        "line": 60,
+        "column": 51
+      }
+    },
+    "uid-8": {
+      "start": {
+        "line": 62,
+        "column": 2
+      },
+      "end": {
+        "line": 62,
+        "column": 49
+      }
+    },
+    "uid-9": {
+      "start": {
+        "line": 63,
+        "column": 2
+      },
+      "end": {
+        "line": 63,
+        "column": 50
+      }
+    },
+    "uid-10": {
+      "start": {
+        "line": 64,
+        "column": 2
+      },
+      "end": {
+        "line": 64,
+        "column": 46
+      }
+    },
+    "uid-11": {
+      "start": {
+        "line": 65,
+        "column": 2
+      },
+      "end": {
+        "line": 67,
+        "column": 8
+      }
+    },
+    "uid-12": {
+      "start": {
+        "line": 66,
+        "column": 4
+      },
+      "end": {
+        "line": 66,
+        "column": 42
+      }
+    }
+  }
+}

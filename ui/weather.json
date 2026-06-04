@@ -1,0 +1,202 @@
+{
+  "element": {
+    "type": "container",
+    "sourceTag": "div",
+    "children": [
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "~"
+            ],
+            "properties": {
+              "id": "weather-icon",
+              "class": "icon"
+            },
+            "dataUid": "uid-3"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "Clear"
+            ],
+            "properties": {
+              "id": "weather-name",
+              "class": "condition"
+            },
+            "dataUid": "uid-4"
+          }
+        ],
+        "properties": {
+          "class": "weather-row"
+        },
+        "dataUid": "uid-2"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "No effect"
+        ],
+        "properties": {
+          "id": "weather-effect",
+          "class": "effect"
+        },
+        "dataUid": "uid-5"
+      }
+    ],
+    "properties": {
+      "class": "weather-hud"
+    },
+    "dataUid": "uid-1"
+  },
+  "classes": {
+    "weather-hud": {
+      "content": {
+        "display": "flex",
+        "flexDirection": "column",
+        "paddingTop": "0.5",
+        "paddingBottom": "0.5",
+        "paddingLeft": "1.5",
+        "paddingRight": "1.5",
+        "backgroundColor": "rgba(0, 10, 20, 0.8)",
+        "borderColor": "#4488ff",
+        "borderWidth": "0.05",
+        "borderRadius": 0.5
+      }
+    },
+    "weather-row": {
+      "content": {
+        "display": "flex",
+        "flexDirection": "row"
+      }
+    },
+    "icon": {
+      "content": {
+        "fontSize": "1.2",
+        "color": "#4488ff"
+      }
+    },
+    "condition": {
+      "content": {
+        "fontSize": "1.1",
+        "color": "#88bbff",
+        "marginLeft": "0.3"
+      }
+    },
+    "effect": {
+      "content": {
+        "fontSize": "0.9",
+        "color": "#668888",
+        "marginTop": "0.2"
+      }
+    }
+  },
+  "ranges": {
+    "weather-hud": {
+      "start": {
+        "line": 1,
+        "column": 2
+      },
+      "end": {
+        "line": 1,
+        "column": 14
+      }
+    },
+    "weather-row": {
+      "start": {
+        "line": 13,
+        "column": 2
+      },
+      "end": {
+        "line": 13,
+        "column": 14
+      }
+    },
+    "icon": {
+      "start": {
+        "line": 17,
+        "column": 2
+      },
+      "end": {
+        "line": 17,
+        "column": 7
+      }
+    },
+    "condition": {
+      "start": {
+        "line": 18,
+        "column": 2
+      },
+      "end": {
+        "line": 18,
+        "column": 12
+      }
+    },
+    "effect": {
+      "start": {
+        "line": 19,
+        "column": 2
+      },
+      "end": {
+        "line": 19,
+        "column": 9
+      }
+    },
+    "uid-1": {
+      "start": {
+        "line": 21,
+        "column": 0
+      },
+      "end": {
+        "line": 27,
+        "column": 6
+      }
+    },
+    "uid-2": {
+      "start": {
+        "line": 22,
+        "column": 2
+      },
+      "end": {
+        "line": 25,
+        "column": 8
+      }
+    },
+    "uid-3": {
+      "start": {
+        "line": 23,
+        "column": 4
+      },
+      "end": {
+        "line": 23,
+        "column": 49
+      }
+    },
+    "uid-4": {
+      "start": {
+        "line": 24,
+        "column": 4
+      },
+      "end": {
+        "line": 24,
+        "column": 58
+      }
+    },
+    "uid-5": {
+      "start": {
+        "line": 26,
+        "column": 2
+      },
+      "end": {
+        "line": 26,
+        "column": 59
+      }
+    }
+  }
+}

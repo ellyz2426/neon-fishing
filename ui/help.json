@@ -1,0 +1,1322 @@
+{
+  "element": {
+    "type": "container",
+    "sourceTag": "div",
+    "children": [
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "HOW TO FISH"
+        ],
+        "properties": {
+          "class": "heading"
+        },
+        "dataUid": "uid-2"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "BROWSER CONTROLS"
+        ],
+        "properties": {
+          "class": "section"
+        },
+        "dataUid": "uid-3"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "Space (hold)"
+            ],
+            "properties": {
+              "class": "key"
+            },
+            "dataUid": "uid-5"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "- Charge cast power"
+            ],
+            "properties": {
+              "class": "text"
+            },
+            "dataUid": "uid-6"
+          }
+        ],
+        "properties": {
+          "class": "entry"
+        },
+        "dataUid": "uid-4"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "Space (release)"
+            ],
+            "properties": {
+              "class": "key"
+            },
+            "dataUid": "uid-8"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "- Cast line"
+            ],
+            "properties": {
+              "class": "text"
+            },
+            "dataUid": "uid-9"
+          }
+        ],
+        "properties": {
+          "class": "entry"
+        },
+        "dataUid": "uid-7"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "Space (tap)"
+            ],
+            "properties": {
+              "class": "key"
+            },
+            "dataUid": "uid-11"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "- Hook fish on bite"
+            ],
+            "properties": {
+              "class": "text"
+            },
+            "dataUid": "uid-12"
+          }
+        ],
+        "properties": {
+          "class": "entry"
+        },
+        "dataUid": "uid-10"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "Space (hold)"
+            ],
+            "properties": {
+              "class": "key"
+            },
+            "dataUid": "uid-14"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "- Reel in during fight"
+            ],
+            "properties": {
+              "class": "text"
+            },
+            "dataUid": "uid-15"
+          }
+        ],
+        "properties": {
+          "class": "entry"
+        },
+        "dataUid": "uid-13"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "ESC"
+            ],
+            "properties": {
+              "class": "key"
+            },
+            "dataUid": "uid-17"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "- Pause"
+            ],
+            "properties": {
+              "class": "text"
+            },
+            "dataUid": "uid-18"
+          }
+        ],
+        "properties": {
+          "class": "entry"
+        },
+        "dataUid": "uid-16"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "R"
+            ],
+            "properties": {
+              "class": "key"
+            },
+            "dataUid": "uid-20"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "- Rematch (game over)"
+            ],
+            "properties": {
+              "class": "text"
+            },
+            "dataUid": "uid-21"
+          }
+        ],
+        "properties": {
+          "class": "entry"
+        },
+        "dataUid": "uid-19"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "VR CONTROLS"
+        ],
+        "properties": {
+          "class": "section"
+        },
+        "dataUid": "uid-22"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "Right Trigger (hold)"
+            ],
+            "properties": {
+              "class": "key"
+            },
+            "dataUid": "uid-24"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "- Charge / Hook / Reel"
+            ],
+            "properties": {
+              "class": "text"
+            },
+            "dataUid": "uid-25"
+          }
+        ],
+        "properties": {
+          "class": "entry"
+        },
+        "dataUid": "uid-23"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "Right Trigger (release)"
+            ],
+            "properties": {
+              "class": "key"
+            },
+            "dataUid": "uid-27"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "- Cast line"
+            ],
+            "properties": {
+              "class": "text"
+            },
+            "dataUid": "uid-28"
+          }
+        ],
+        "properties": {
+          "class": "entry"
+        },
+        "dataUid": "uid-26"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "B Button"
+            ],
+            "properties": {
+              "class": "key"
+            },
+            "dataUid": "uid-30"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "- Pause"
+            ],
+            "properties": {
+              "class": "text"
+            },
+            "dataUid": "uid-31"
+          }
+        ],
+        "properties": {
+          "class": "entry"
+        },
+        "dataUid": "uid-29"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "Laser Pointer"
+            ],
+            "properties": {
+              "class": "key"
+            },
+            "dataUid": "uid-33"
+          },
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "- Menu interaction"
+            ],
+            "properties": {
+              "class": "text"
+            },
+            "dataUid": "uid-34"
+          }
+        ],
+        "properties": {
+          "class": "entry"
+        },
+        "dataUid": "uid-32"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "GAMEPLAY"
+        ],
+        "properties": {
+          "class": "section"
+        },
+        "dataUid": "uid-35"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "1. CAST: Hold to charge power, release to cast"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-36"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "2. WAIT: Watch for shadow approaching your bobber"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-37"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "3. HOOK: Quickly press when you see the bite"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-38"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "4. FIGHT: Hold to reel, watch the tension bar!"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-39"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "Too much tension = line snaps!"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-40"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "Release to lower tension, then reel again"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-41"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "5. CATCH: Reel the fish all the way in!"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-42"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "FISH DEPTHS"
+        ],
+        "properties": {
+          "class": "section"
+        },
+        "dataUid": "uid-43"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "Short cast = Surface fish (Common)"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-44"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "Medium cast = Mid-depth (Uncommon)"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-45"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "Long cast = Deep water (Rare)"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-46"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "Max power = Abyss (Epic + Legendary)"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-47"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "GAME MODES"
+        ],
+        "properties": {
+          "class": "section"
+        },
+        "dataUid": "uid-48"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "FREE FISH - Catch at your own pace"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-49"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "TIME ATTACK - Race against the clock"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-50"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "TROPHY HUNT - Find a specific species"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-51"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "TOURNAMENT - Best score in 5 catches"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-52"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "DAILY - Same conditions for everyone"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-53"
+      },
+      {
+        "sourceTag": "span",
+        "type": "custom",
+        "children": [
+          "ZEN - No pressure, just vibes"
+        ],
+        "properties": {
+          "class": "text"
+        },
+        "dataUid": "uid-54"
+      },
+      {
+        "type": "container",
+        "sourceTag": "div",
+        "children": [
+          {
+            "sourceTag": "span",
+            "type": "custom",
+            "children": [
+              "BACK"
+            ],
+            "properties": {
+              "class": "back-text"
+            },
+            "dataUid": "uid-56"
+          }
+        ],
+        "properties": {
+          "id": "btn-back-help",
+          "class": "back-btn"
+        },
+        "dataUid": "uid-55"
+      }
+    ],
+    "properties": {
+      "class": "help-panel"
+    },
+    "dataUid": "uid-1"
+  },
+  "classes": {
+    "help-panel": {
+      "content": {
+        "display": "flex",
+        "flexDirection": "column",
+        "paddingTop": "2",
+        "paddingBottom": "2",
+        "paddingLeft": "2",
+        "paddingRight": "2",
+        "backgroundColor": "rgba(0, 10, 20, 0.95)",
+        "borderColor": "#00ffff",
+        "borderWidth": "0.1",
+        "borderRadius": 1.5
+      }
+    },
+    "heading": {
+      "content": {
+        "fontSize": "2.5",
+        "color": "#00ffff",
+        "fontWeight": "bold"
+      }
+    },
+    "section": {
+      "content": {
+        "fontSize": "1.5",
+        "color": "#44aaaa",
+        "fontWeight": "bold",
+        "marginTop": "1"
+      }
+    },
+    "text": {
+      "content": {
+        "fontSize": "1.1",
+        "color": "#88aaaa",
+        "marginTop": "0.3"
+      }
+    },
+    "key": {
+      "content": {
+        "fontSize": "1.1",
+        "color": "#00ffff",
+        "fontWeight": "bold"
+      }
+    },
+    "entry": {
+      "content": {
+        "display": "flex",
+        "flexDirection": "row",
+        "marginTop": "0.2"
+      }
+    },
+    "back-btn": {
+      "content": {
+        "marginTop": "1",
+        "paddingTop": "0.5",
+        "paddingBottom": "0.5",
+        "paddingLeft": "2",
+        "paddingRight": "2",
+        "backgroundColor": "rgba(60, 30, 0, 0.6)",
+        "borderColor": "#ffaa00",
+        "borderWidth": "0.05",
+        "borderRadius": 0.5,
+        "cursor": "pointer",
+        "alignSelf": "center"
+      }
+    },
+    "back-text": {
+      "content": {
+        "fontSize": "1.3",
+        "color": "#ffaa00"
+      }
+    }
+  },
+  "ranges": {
+    "help-panel": {
+      "start": {
+        "line": 1,
+        "column": 2
+      },
+      "end": {
+        "line": 1,
+        "column": 13
+      }
+    },
+    "heading": {
+      "start": {
+        "line": 13,
+        "column": 2
+      },
+      "end": {
+        "line": 13,
+        "column": 10
+      }
+    },
+    "section": {
+      "start": {
+        "line": 14,
+        "column": 2
+      },
+      "end": {
+        "line": 14,
+        "column": 10
+      }
+    },
+    "text": {
+      "start": {
+        "line": 15,
+        "column": 2
+      },
+      "end": {
+        "line": 15,
+        "column": 7
+      }
+    },
+    "key": {
+      "start": {
+        "line": 16,
+        "column": 2
+      },
+      "end": {
+        "line": 16,
+        "column": 6
+      }
+    },
+    "entry": {
+      "start": {
+        "line": 17,
+        "column": 2
+      },
+      "end": {
+        "line": 17,
+        "column": 8
+      }
+    },
+    "back-btn": {
+      "start": {
+        "line": 22,
+        "column": 2
+      },
+      "end": {
+        "line": 22,
+        "column": 11
+      }
+    },
+    "back-text": {
+      "start": {
+        "line": 35,
+        "column": 2
+      },
+      "end": {
+        "line": 35,
+        "column": 12
+      }
+    },
+    "uid-1": {
+      "start": {
+        "line": 37,
+        "column": 0
+      },
+      "end": {
+        "line": 80,
+        "column": 6
+      }
+    },
+    "uid-2": {
+      "start": {
+        "line": 38,
+        "column": 2
+      },
+      "end": {
+        "line": 38,
+        "column": 42
+      }
+    },
+    "uid-3": {
+      "start": {
+        "line": 40,
+        "column": 2
+      },
+      "end": {
+        "line": 40,
+        "column": 47
+      }
+    },
+    "uid-4": {
+      "start": {
+        "line": 41,
+        "column": 2
+      },
+      "end": {
+        "line": 41,
+        "column": 110
+      }
+    },
+    "uid-5": {
+      "start": {
+        "line": 41,
+        "column": 21
+      },
+      "end": {
+        "line": 41,
+        "column": 58
+      }
+    },
+    "uid-6": {
+      "start": {
+        "line": 41,
+        "column": 58
+      },
+      "end": {
+        "line": 41,
+        "column": 104
+      }
+    },
+    "uid-7": {
+      "start": {
+        "line": 42,
+        "column": 2
+      },
+      "end": {
+        "line": 42,
+        "column": 105
+      }
+    },
+    "uid-8": {
+      "start": {
+        "line": 42,
+        "column": 21
+      },
+      "end": {
+        "line": 42,
+        "column": 61
+      }
+    },
+    "uid-9": {
+      "start": {
+        "line": 42,
+        "column": 61
+      },
+      "end": {
+        "line": 42,
+        "column": 99
+      }
+    },
+    "uid-10": {
+      "start": {
+        "line": 43,
+        "column": 2
+      },
+      "end": {
+        "line": 43,
+        "column": 109
+      }
+    },
+    "uid-11": {
+      "start": {
+        "line": 43,
+        "column": 21
+      },
+      "end": {
+        "line": 43,
+        "column": 57
+      }
+    },
+    "uid-12": {
+      "start": {
+        "line": 43,
+        "column": 57
+      },
+      "end": {
+        "line": 43,
+        "column": 103
+      }
+    },
+    "uid-13": {
+      "start": {
+        "line": 44,
+        "column": 2
+      },
+      "end": {
+        "line": 44,
+        "column": 113
+      }
+    },
+    "uid-14": {
+      "start": {
+        "line": 44,
+        "column": 21
+      },
+      "end": {
+        "line": 44,
+        "column": 58
+      }
+    },
+    "uid-15": {
+      "start": {
+        "line": 44,
+        "column": 58
+      },
+      "end": {
+        "line": 44,
+        "column": 107
+      }
+    },
+    "uid-16": {
+      "start": {
+        "line": 45,
+        "column": 2
+      },
+      "end": {
+        "line": 45,
+        "column": 89
+      }
+    },
+    "uid-17": {
+      "start": {
+        "line": 45,
+        "column": 21
+      },
+      "end": {
+        "line": 45,
+        "column": 49
+      }
+    },
+    "uid-18": {
+      "start": {
+        "line": 45,
+        "column": 49
+      },
+      "end": {
+        "line": 45,
+        "column": 83
+      }
+    },
+    "uid-19": {
+      "start": {
+        "line": 46,
+        "column": 2
+      },
+      "end": {
+        "line": 46,
+        "column": 101
+      }
+    },
+    "uid-20": {
+      "start": {
+        "line": 46,
+        "column": 21
+      },
+      "end": {
+        "line": 46,
+        "column": 47
+      }
+    },
+    "uid-21": {
+      "start": {
+        "line": 46,
+        "column": 47
+      },
+      "end": {
+        "line": 46,
+        "column": 95
+      }
+    },
+    "uid-22": {
+      "start": {
+        "line": 48,
+        "column": 2
+      },
+      "end": {
+        "line": 48,
+        "column": 42
+      }
+    },
+    "uid-23": {
+      "start": {
+        "line": 49,
+        "column": 2
+      },
+      "end": {
+        "line": 49,
+        "column": 121
+      }
+    },
+    "uid-24": {
+      "start": {
+        "line": 49,
+        "column": 21
+      },
+      "end": {
+        "line": 49,
+        "column": 66
+      }
+    },
+    "uid-25": {
+      "start": {
+        "line": 49,
+        "column": 66
+      },
+      "end": {
+        "line": 49,
+        "column": 115
+      }
+    },
+    "uid-26": {
+      "start": {
+        "line": 50,
+        "column": 2
+      },
+      "end": {
+        "line": 50,
+        "column": 113
+      }
+    },
+    "uid-27": {
+      "start": {
+        "line": 50,
+        "column": 21
+      },
+      "end": {
+        "line": 50,
+        "column": 69
+      }
+    },
+    "uid-28": {
+      "start": {
+        "line": 50,
+        "column": 69
+      },
+      "end": {
+        "line": 50,
+        "column": 107
+      }
+    },
+    "uid-29": {
+      "start": {
+        "line": 51,
+        "column": 2
+      },
+      "end": {
+        "line": 51,
+        "column": 94
+      }
+    },
+    "uid-30": {
+      "start": {
+        "line": 51,
+        "column": 21
+      },
+      "end": {
+        "line": 51,
+        "column": 54
+      }
+    },
+    "uid-31": {
+      "start": {
+        "line": 51,
+        "column": 54
+      },
+      "end": {
+        "line": 51,
+        "column": 88
+      }
+    },
+    "uid-32": {
+      "start": {
+        "line": 52,
+        "column": 2
+      },
+      "end": {
+        "line": 52,
+        "column": 110
+      }
+    },
+    "uid-33": {
+      "start": {
+        "line": 52,
+        "column": 21
+      },
+      "end": {
+        "line": 52,
+        "column": 59
+      }
+    },
+    "uid-34": {
+      "start": {
+        "line": 52,
+        "column": 59
+      },
+      "end": {
+        "line": 52,
+        "column": 104
+      }
+    },
+    "uid-35": {
+      "start": {
+        "line": 54,
+        "column": 2
+      },
+      "end": {
+        "line": 54,
+        "column": 39
+      }
+    },
+    "uid-36": {
+      "start": {
+        "line": 55,
+        "column": 2
+      },
+      "end": {
+        "line": 55,
+        "column": 74
+      }
+    },
+    "uid-37": {
+      "start": {
+        "line": 56,
+        "column": 2
+      },
+      "end": {
+        "line": 56,
+        "column": 77
+      }
+    },
+    "uid-38": {
+      "start": {
+        "line": 57,
+        "column": 2
+      },
+      "end": {
+        "line": 57,
+        "column": 72
+      }
+    },
+    "uid-39": {
+      "start": {
+        "line": 58,
+        "column": 2
+      },
+      "end": {
+        "line": 58,
+        "column": 74
+      }
+    },
+    "uid-40": {
+      "start": {
+        "line": 59,
+        "column": 2
+      },
+      "end": {
+        "line": 59,
+        "column": 61
+      }
+    },
+    "uid-41": {
+      "start": {
+        "line": 60,
+        "column": 2
+      },
+      "end": {
+        "line": 60,
+        "column": 72
+      }
+    },
+    "uid-42": {
+      "start": {
+        "line": 61,
+        "column": 2
+      },
+      "end": {
+        "line": 61,
+        "column": 67
+      }
+    },
+    "uid-43": {
+      "start": {
+        "line": 63,
+        "column": 2
+      },
+      "end": {
+        "line": 63,
+        "column": 42
+      }
+    },
+    "uid-44": {
+      "start": {
+        "line": 64,
+        "column": 2
+      },
+      "end": {
+        "line": 64,
+        "column": 62
+      }
+    },
+    "uid-45": {
+      "start": {
+        "line": 65,
+        "column": 2
+      },
+      "end": {
+        "line": 65,
+        "column": 62
+      }
+    },
+    "uid-46": {
+      "start": {
+        "line": 66,
+        "column": 2
+      },
+      "end": {
+        "line": 66,
+        "column": 57
+      }
+    },
+    "uid-47": {
+      "start": {
+        "line": 67,
+        "column": 2
+      },
+      "end": {
+        "line": 67,
+        "column": 64
+      }
+    },
+    "uid-48": {
+      "start": {
+        "line": 69,
+        "column": 2
+      },
+      "end": {
+        "line": 69,
+        "column": 41
+      }
+    },
+    "uid-49": {
+      "start": {
+        "line": 70,
+        "column": 2
+      },
+      "end": {
+        "line": 70,
+        "column": 62
+      }
+    },
+    "uid-50": {
+      "start": {
+        "line": 71,
+        "column": 2
+      },
+      "end": {
+        "line": 71,
+        "column": 64
+      }
+    },
+    "uid-51": {
+      "start": {
+        "line": 72,
+        "column": 2
+      },
+      "end": {
+        "line": 72,
+        "column": 65
+      }
+    },
+    "uid-52": {
+      "start": {
+        "line": 73,
+        "column": 2
+      },
+      "end": {
+        "line": 73,
+        "column": 64
+      }
+    },
+    "uid-53": {
+      "start": {
+        "line": 74,
+        "column": 2
+      },
+      "end": {
+        "line": 74,
+        "column": 64
+      }
+    },
+    "uid-54": {
+      "start": {
+        "line": 75,
+        "column": 2
+      },
+      "end": {
+        "line": 75,
+        "column": 57
+      }
+    },
+    "uid-55": {
+      "start": {
+        "line": 77,
+        "column": 2
+      },
+      "end": {
+        "line": 79,
+        "column": 8
+      }
+    },
+    "uid-56": {
+      "start": {
+        "line": 78,
+        "column": 4
+      },
+      "end": {
+        "line": 78,
+        "column": 39
+      }
+    }
+  }
+}
