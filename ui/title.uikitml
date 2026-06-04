@@ -1,0 +1,75 @@
+<style>
+  .title-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3;
+    padding-bottom: 3;
+    padding-left: 4;
+    padding-right: 4;
+    background-color: rgba(0, 10, 20, 0.9);
+    border-color: #00ffff;
+    border-width: 0.1;
+    border-radius: 1.5;
+  }
+  .game-title {
+    font-size: 4;
+    color: #00ffff;
+    font-weight: bold;
+  }
+  .subtitle {
+    font-size: 1.5;
+    color: #44aaaa;
+    margin-top: 0.5;
+  }
+  .btn {
+    margin-top: 1;
+    padding-top: 0.8;
+    padding-bottom: 0.8;
+    padding-left: 3;
+    padding-right: 3;
+    background-color: rgba(0, 80, 80, 0.6);
+    border-color: #00ffff;
+    border-width: 0.05;
+    border-radius: 0.5;
+    cursor: pointer;
+  }
+  .btn-text {
+    font-size: 1.8;
+    color: #00ffff;
+    font-weight: bold;
+  }
+  .btn-green { background-color: rgba(0, 80, 40, 0.6); border-color: #44ff44; }
+  .btn-green .btn-text { color: #44ff44; }
+  .btn-orange { background-color: rgba(80, 40, 0, 0.6); border-color: #ffaa00; }
+  .btn-orange .btn-text { color: #ffaa00; }
+  .btn-purple { background-color: rgba(40, 0, 80, 0.6); border-color: #aa44ff; }
+  .btn-purple .btn-text { color: #aa44ff; }
+  .btn-pink { background-color: rgba(80, 0, 40, 0.6); border-color: #ff44aa; }
+  .btn-pink .btn-text { color: #ff44aa; }
+</style>
+<div class="title-panel">
+  <span class="game-title">NEON FISHING</span>
+  <span class="subtitle">Holodeck Fishing Simulator</span>
+  <div id="btn-play" class="btn">
+    <span class="btn-text">CAST LINE</span>
+  </div>
+  <div id="btn-codex" class="btn btn-green">
+    <span class="btn-text">FISH CODEX</span>
+  </div>
+  <div id="btn-rods" class="btn btn-orange">
+    <span class="btn-text">FISHING RODS</span>
+  </div>
+  <div id="btn-scores" class="btn btn-purple">
+    <span class="btn-text">LEADERBOARD</span>
+  </div>
+  <div id="btn-achievements" class="btn btn-pink">
+    <span class="btn-text">ACHIEVEMENTS</span>
+  </div>
+  <div id="btn-settings" class="btn">
+    <span class="btn-text">SETTINGS</span>
+  </div>
+  <div id="btn-help" class="btn">
+    <span class="btn-text">HELP</span>
+  </div>
+</div>

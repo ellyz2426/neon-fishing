@@ -1,0 +1,53 @@
+<style>
+  .tension-panel {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5;
+    padding-bottom: 0.5;
+    padding-left: 1.5;
+    padding-right: 1.5;
+    background-color: rgba(0, 10, 20, 0.85);
+    border-color: #ff4444;
+    border-width: 0.05;
+    border-radius: 0.5;
+  }
+  .tension-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .label {
+    font-size: 1;
+    color: #ff6666;
+  }
+  .value {
+    font-size: 1.2;
+    color: #ff4444;
+    font-weight: bold;
+    margin-left: 0.5;
+  }
+  .bar {
+    font-size: 1;
+    color: #ff4444;
+    margin-top: 0.2;
+  }
+  .status {
+    font-size: 1;
+    color: #ffaa00;
+    font-weight: bold;
+    margin-left: 0.5;
+  }
+  .dist-label {
+    font-size: 1;
+    color: #44aaaa;
+    margin-top: 0.2;
+  }
+</style>
+<div class="tension-panel">
+  <div class="tension-row">
+    <span class="label">TENSION</span>
+    <span id="tension-value" class="value">0%</span>
+    <span id="tension-label" class="status">SAFE</span>
+  </div>
+  <span id="tension-bar" class="bar"></span>
+  <span id="fish-dist" class="dist-label"></span>
+</div>

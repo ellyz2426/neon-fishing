@@ -1,0 +1,55 @@
+<style>
+  .hud-panel {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1;
+    padding-bottom: 1;
+    padding-left: 2;
+    padding-right: 2;
+    background-color: rgba(0, 10, 20, 0.85);
+    border-color: #00ffff;
+    border-width: 0.05;
+    border-radius: 0.8;
+  }
+  .hud-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.3;
+  }
+  .label {
+    font-size: 1.2;
+    color: #668888;
+  }
+  .value {
+    font-size: 1.5;
+    color: #00ffff;
+    font-weight: bold;
+    margin-left: 0.5;
+  }
+  .mode-label {
+    font-size: 1;
+    color: #44aaaa;
+  }
+  .combo {
+    font-size: 1.5;
+    color: #ffaa00;
+    font-weight: bold;
+    margin-left: 1;
+  }
+</style>
+<div class="hud-panel">
+  <span id="hud-mode" class="mode-label">FREE FISH</span>
+  <div class="hud-row">
+    <span class="label">SCORE</span>
+    <span id="hud-score" class="value">0</span>
+    <span id="hud-combo" class="combo"></span>
+  </div>
+  <div class="hud-row">
+    <span class="label">CAUGHT</span>
+    <span id="hud-caught" class="value">0</span>
+  </div>
+  <div class="hud-row">
+    <span class="label">TIME</span>
+    <span id="hud-time" class="value"></span>
+  </div>
+</div>

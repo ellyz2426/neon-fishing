@@ -1,0 +1,89 @@
+<style>
+  .settings-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2;
+    padding-bottom: 2;
+    padding-left: 3;
+    padding-right: 3;
+    background-color: rgba(0, 10, 20, 0.95);
+    border-color: #00ffff;
+    border-width: 0.1;
+    border-radius: 1.5;
+  }
+  .heading { font-size: 2.5; color: #00ffff; font-weight: bold; }
+  .section { font-size: 1.5; color: #44aaaa; margin-top: 1; }
+  .vol-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0.5;
+  }
+  .label { font-size: 1.2; color: #668888; }
+  .value { font-size: 1.3; color: #00ffff; font-weight: bold; margin-left: 0.5; margin-right: 0.5; }
+  .small-btn {
+    padding-top: 0.3;
+    padding-bottom: 0.3;
+    padding-left: 0.8;
+    padding-right: 0.8;
+    background-color: rgba(0, 60, 60, 0.6);
+    border-color: #00aaaa;
+    border-width: 0.05;
+    border-radius: 0.3;
+    cursor: pointer;
+    margin-left: 0.3;
+  }
+  .small-btn-text { font-size: 1.2; color: #00ffff; }
+  .theme-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0.8;
+  }
+  .theme-name { font-size: 1.3; color: #ffaa00; font-weight: bold; margin-left: 1; margin-right: 1; }
+  .back-btn {
+    margin-top: 1.5;
+    padding-top: 0.5;
+    padding-bottom: 0.5;
+    padding-left: 2;
+    padding-right: 2;
+    background-color: rgba(60, 30, 0, 0.6);
+    border-color: #ffaa00;
+    border-width: 0.05;
+    border-radius: 0.5;
+    cursor: pointer;
+  }
+  .back-text { font-size: 1.3; color: #ffaa00; }
+</style>
+<div class="settings-panel">
+  <span class="heading">SETTINGS</span>
+  <span class="section">AUDIO</span>
+  <div class="vol-row">
+    <span class="label">MASTER</span>
+    <div id="btn-master-dn" class="small-btn"><span class="small-btn-text">-</span></div>
+    <span id="vol-master" class="value">70%</span>
+    <div id="btn-master-up" class="small-btn"><span class="small-btn-text">+</span></div>
+  </div>
+  <div class="vol-row">
+    <span class="label">SFX</span>
+    <div id="btn-sfx-dn" class="small-btn"><span class="small-btn-text">-</span></div>
+    <span id="vol-sfx" class="value">80%</span>
+    <div id="btn-sfx-up" class="small-btn"><span class="small-btn-text">+</span></div>
+  </div>
+  <div class="vol-row">
+    <span class="label">MUSIC</span>
+    <div id="btn-music-dn" class="small-btn"><span class="small-btn-text">-</span></div>
+    <span id="vol-music" class="value">50%</span>
+    <div id="btn-music-up" class="small-btn"><span class="small-btn-text">+</span></div>
+  </div>
+  <span class="section">THEME</span>
+  <div class="theme-row">
+    <div id="btn-theme-prev" class="small-btn"><span class="small-btn-text">&lt;</span></div>
+    <span id="theme-name" class="theme-name">Neon Lagoon</span>
+    <div id="btn-theme-next" class="small-btn"><span class="small-btn-text">&gt;</span></div>
+  </div>
+  <div id="btn-back-settings" class="back-btn">
+    <span class="back-text">BACK</span>
+  </div>
+</div>

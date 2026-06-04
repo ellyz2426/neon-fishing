@@ -1,0 +1,89 @@
+<style>
+  .mode-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2;
+    padding-bottom: 2;
+    padding-left: 3;
+    padding-right: 3;
+    background-color: rgba(0, 10, 20, 0.9);
+    border-color: #00ffff;
+    border-width: 0.1;
+    border-radius: 1.5;
+  }
+  .heading {
+    font-size: 3;
+    color: #00ffff;
+    font-weight: bold;
+  }
+  .mode-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1;
+  }
+  .btn {
+    margin-top: 0.8;
+    padding-top: 0.6;
+    padding-bottom: 0.6;
+    padding-left: 2;
+    padding-right: 2;
+    background-color: rgba(0, 60, 60, 0.6);
+    border-color: #00aaaa;
+    border-width: 0.05;
+    border-radius: 0.5;
+    cursor: pointer;
+  }
+  .btn-text {
+    font-size: 1.5;
+    color: #00ffff;
+  }
+  .desc {
+    font-size: 1;
+    color: #668888;
+    margin-top: 0.2;
+  }
+  .back-btn {
+    margin-top: 1.5;
+    padding-top: 0.5;
+    padding-bottom: 0.5;
+    padding-left: 2;
+    padding-right: 2;
+    background-color: rgba(60, 30, 0, 0.6);
+    border-color: #ffaa00;
+    border-width: 0.05;
+    border-radius: 0.5;
+    cursor: pointer;
+  }
+  .back-text { font-size: 1.3; color: #ffaa00; }
+</style>
+<div class="mode-panel">
+  <span class="heading">SELECT MODE</span>
+  <div id="btn-free" class="btn">
+    <span class="btn-text">FREE FISH</span>
+    <span class="desc">Relax and catch at your pace</span>
+  </div>
+  <div id="btn-timeattack" class="btn">
+    <span class="btn-text">TIME ATTACK</span>
+    <span class="desc">Catch as many as possible</span>
+  </div>
+  <div id="btn-trophy" class="btn">
+    <span class="btn-text">TROPHY HUNT</span>
+    <span class="desc">Catch a specific rare species</span>
+  </div>
+  <div id="btn-tournament" class="btn">
+    <span class="btn-text">TOURNAMENT</span>
+    <span class="desc">Compete for the highest score</span>
+  </div>
+  <div id="btn-daily" class="btn">
+    <span class="btn-text">DAILY CHALLENGE</span>
+    <span class="desc">Same conditions for everyone</span>
+  </div>
+  <div id="btn-zen" class="btn">
+    <span class="btn-text">ZEN MODE</span>
+    <span class="desc">No pressure, just vibes</span>
+  </div>
+  <div id="btn-back-mode" class="back-btn">
+    <span class="back-text">BACK</span>
+  </div>
+</div>

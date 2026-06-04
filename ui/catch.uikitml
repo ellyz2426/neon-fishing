@@ -1,0 +1,69 @@
+<style>
+  .catch-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3;
+    padding-bottom: 3;
+    padding-left: 4;
+    padding-right: 4;
+    background-color: rgba(0, 10, 20, 0.95);
+    border-color: #44ff44;
+    border-width: 0.1;
+    border-radius: 1.5;
+  }
+  .heading {
+    font-size: 3;
+    color: #44ff44;
+    font-weight: bold;
+  }
+  .fish-name {
+    font-size: 2.5;
+    color: #00ffff;
+    font-weight: bold;
+    margin-top: 1;
+  }
+  .rarity {
+    font-size: 1.5;
+    color: #ffaa00;
+    margin-top: 0.5;
+  }
+  .stat-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.5;
+  }
+  .label { font-size: 1.3; color: #668888; }
+  .value { font-size: 1.5; color: #00ffff; font-weight: bold; margin-left: 0.5; }
+  .points { font-size: 2; color: #ffaa00; font-weight: bold; margin-top: 0.8; }
+  .combo-text { font-size: 1.5; color: #ff44aa; margin-top: 0.3; }
+  .new-text { font-size: 1.5; color: #44ff44; font-weight: bold; margin-top: 0.5; }
+  .btn {
+    margin-top: 1.5;
+    padding-top: 0.8;
+    padding-bottom: 0.8;
+    padding-left: 3;
+    padding-right: 3;
+    background-color: rgba(0, 60, 60, 0.6);
+    border-color: #00ffff;
+    border-width: 0.05;
+    border-radius: 0.5;
+    cursor: pointer;
+  }
+  .btn-text { font-size: 1.8; color: #00ffff; font-weight: bold; }
+</style>
+<div class="catch-panel">
+  <span class="heading">FISH CAUGHT!</span>
+  <span id="fish-name" class="fish-name">---</span>
+  <span id="fish-rarity" class="rarity">---</span>
+  <div class="stat-row">
+    <span class="label">WEIGHT</span>
+    <span id="fish-weight" class="value">---</span>
+  </div>
+  <span id="fish-points" class="points">+0</span>
+  <span id="fish-combo" class="combo-text"></span>
+  <span id="fish-new" class="new-text"></span>
+  <div id="btn-continue" class="btn">
+    <span class="btn-text">CONTINUE</span>
+  </div>
+</div>

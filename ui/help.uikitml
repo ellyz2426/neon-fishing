@@ -1,0 +1,81 @@
+<style>
+  .help-panel {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2;
+    padding-bottom: 2;
+    padding-left: 2;
+    padding-right: 2;
+    background-color: rgba(0, 10, 20, 0.95);
+    border-color: #00ffff;
+    border-width: 0.1;
+    border-radius: 1.5;
+  }
+  .heading { font-size: 2.5; color: #00ffff; font-weight: bold; }
+  .section { font-size: 1.5; color: #44aaaa; font-weight: bold; margin-top: 1; }
+  .text { font-size: 1.1; color: #88aaaa; margin-top: 0.3; }
+  .key { font-size: 1.1; color: #00ffff; font-weight: bold; }
+  .entry {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.2;
+  }
+  .back-btn {
+    margin-top: 1;
+    padding-top: 0.5;
+    padding-bottom: 0.5;
+    padding-left: 2;
+    padding-right: 2;
+    background-color: rgba(60, 30, 0, 0.6);
+    border-color: #ffaa00;
+    border-width: 0.05;
+    border-radius: 0.5;
+    cursor: pointer;
+    align-self: center;
+  }
+  .back-text { font-size: 1.3; color: #ffaa00; }
+</style>
+<div class="help-panel">
+  <span class="heading">HOW TO FISH</span>
+
+  <span class="section">BROWSER CONTROLS</span>
+  <div class="entry"><span class="key">Space (hold)</span><span class="text"> - Charge cast power</span></div>
+  <div class="entry"><span class="key">Space (release)</span><span class="text"> - Cast line</span></div>
+  <div class="entry"><span class="key">Space (tap)</span><span class="text"> - Hook fish on bite</span></div>
+  <div class="entry"><span class="key">Space (hold)</span><span class="text"> - Reel in during fight</span></div>
+  <div class="entry"><span class="key">ESC</span><span class="text"> - Pause</span></div>
+  <div class="entry"><span class="key">R</span><span class="text"> - Rematch (game over)</span></div>
+
+  <span class="section">VR CONTROLS</span>
+  <div class="entry"><span class="key">Right Trigger (hold)</span><span class="text"> - Charge / Hook / Reel</span></div>
+  <div class="entry"><span class="key">Right Trigger (release)</span><span class="text"> - Cast line</span></div>
+  <div class="entry"><span class="key">B Button</span><span class="text"> - Pause</span></div>
+  <div class="entry"><span class="key">Laser Pointer</span><span class="text"> - Menu interaction</span></div>
+
+  <span class="section">GAMEPLAY</span>
+  <span class="text">1. CAST: Hold to charge power, release to cast</span>
+  <span class="text">2. WAIT: Watch for shadow approaching your bobber</span>
+  <span class="text">3. HOOK: Quickly press when you see the bite</span>
+  <span class="text">4. FIGHT: Hold to reel, watch the tension bar!</span>
+  <span class="text">   Too much tension = line snaps!</span>
+  <span class="text">   Release to lower tension, then reel again</span>
+  <span class="text">5. CATCH: Reel the fish all the way in!</span>
+
+  <span class="section">FISH DEPTHS</span>
+  <span class="text">Short cast = Surface fish (Common)</span>
+  <span class="text">Medium cast = Mid-depth (Uncommon)</span>
+  <span class="text">Long cast = Deep water (Rare)</span>
+  <span class="text">Max power = Abyss (Epic + Legendary)</span>
+
+  <span class="section">GAME MODES</span>
+  <span class="text">FREE FISH - Catch at your own pace</span>
+  <span class="text">TIME ATTACK - Race against the clock</span>
+  <span class="text">TROPHY HUNT - Find a specific species</span>
+  <span class="text">TOURNAMENT - Best score in 5 catches</span>
+  <span class="text">DAILY - Same conditions for everyone</span>
+  <span class="text">ZEN - No pressure, just vibes</span>
+
+  <div id="btn-back-help" class="back-btn">
+    <span class="back-text">BACK</span>
+  </div>
+</div>

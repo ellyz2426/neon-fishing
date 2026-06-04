@@ -1,0 +1,44 @@
+<style>
+  .pause-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3;
+    padding-bottom: 3;
+    padding-left: 4;
+    padding-right: 4;
+    background-color: rgba(0, 10, 20, 0.95);
+    border-color: #ffaa00;
+    border-width: 0.1;
+    border-radius: 1.5;
+  }
+  .heading {
+    font-size: 3;
+    color: #ffaa00;
+    font-weight: bold;
+  }
+  .btn {
+    margin-top: 1.5;
+    padding-top: 0.8;
+    padding-bottom: 0.8;
+    padding-left: 3;
+    padding-right: 3;
+    background-color: rgba(0, 60, 60, 0.6);
+    border-color: #00ffff;
+    border-width: 0.05;
+    border-radius: 0.5;
+    cursor: pointer;
+  }
+  .btn-text { font-size: 2; color: #00ffff; font-weight: bold; }
+  .btn-red { background-color: rgba(80, 0, 0, 0.6); border-color: #ff4444; }
+  .btn-red .btn-text { color: #ff4444; }
+</style>
+<div class="pause-panel">
+  <span class="heading">PAUSED</span>
+  <div id="btn-resume" class="btn">
+    <span class="btn-text">RESUME</span>
+  </div>
+  <div id="btn-quit" class="btn btn-red">
+    <span class="btn-text">QUIT</span>
+  </div>
+</div>
